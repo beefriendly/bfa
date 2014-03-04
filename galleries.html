@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Contact ~ Bee Friendly Apiary</title>
+    <title>Galleries ~ Bee Friendly Apiary</title>
 	<meta name="robots" content="index, follow">
-    <meta name="description" content="Contact Bee Friendly Apiary">
-    <meta name="keywords" content="contact">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 
     <link href="bfa/css/bootstrap.css" rel="stylesheet">
     <link href="bfa/css/bootstrap-responsive.css" rel="stylesheet">
@@ -23,93 +23,6 @@
      <link rel="shortcut icon" href="bfa/ico/favicon.png">
 <meta name="google-site-verification" content="1ChiiS0e1rpS95aYqZq7BrwA7JNuLgp3C4S6EdVzyhQ" />
   <script type="text/javascript" src="/assets/components/nospam/js/nospam.js"></script>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=en"></script>
-<script type="text/javascript">
-//<![CDATA[
-var xmlHttp;
-function GetXmlHttpObject(){
-    var xmlHttp = null;
-    try {xmlHttp = new XMLHttpRequest();}
-    catch (e) {
-        try {xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");}
-        catch (e){xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");}
-    }
-    return xmlHttp;
-}
-function displayInfoWindow(map,iburl,mkr,infow){
-    xmlHttp = GetXmlHttpObject();
-    if(xmlHttp == null){
-      alert ("Your browser does not support AJAX!");
-      return;
-    }
-    xmlHttp.onreadystatechange = function(){
-        if(xmlHttp.readyState == 4){
-            var res = xmlHttp.responseText;
-            err = res.split("ERROR:")[1];
-            if (!err) {
-                infow.setContent(res);
-                infow.open(map,mkr);
-            }
-        }
-    }
-    mkrid = mkr.docid;
-    if ( mkrid > 0){
-        var params = "mkrid="+mkrid;
-        xmlHttp.open("POST",iburl,true);
-        xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlHttp.setRequestHeader("Content-length", params.length);
-        xmlHttp.setRequestHeader("Connection", "close");
-        xmlHttp.send(params);
-    }
-}
-function addMarkerPlace(ptPlace, place, map, imgMkrs, infobulle){
-    mkrIcon = place[5];
-    marker = { position: ptPlace, map: map, title: place[0], link: place[4] };
-    if (mkrIcon && imgMkrs[mkrIcon] && imgMkrs[mkrIcon]["image"]) {
-
-        if (imgMkrs[mkrIcon]["image"][1])
-            marker.icon = new google.maps.MarkerImage("assets/images/gmaps/"+imgMkrs[mkrIcon]["image"][0],
-                new google.maps.Size(imgMkrs[mkrIcon]["image"][1], imgMkrs[mkrIcon]["image"][2]),
-                new google.maps.Point(imgMkrs[mkrIcon]["image"][3], imgMkrs[mkrIcon]["image"][4]),
-                new google.maps.Point(imgMkrs[mkrIcon]["image"][5], imgMkrs[mkrIcon]["image"][6]));
-        else marker.icon ="assets/images/gmaps/"+imgMkrs[mkrIcon]["image"][0];
-    }
-    if (mkrIcon && imgMkrs[mkrIcon] && imgMkrs[mkrIcon]["shadow"]) {
-        marker.shadow = new google.maps.MarkerImage("assets/images/gmaps/"+imgMkrs[mkrIcon]["shadow"][0],
-            new google.maps.Size(imgMkrs[mkrIcon]["shadow"][1], imgMkrs[mkrIcon]["shadow"][2]),
-            new google.maps.Point(imgMkrs[mkrIcon]["shadow"][3], imgMkrs[mkrIcon]["shadow"][4]),
-            new google.maps.Point(imgMkrs[mkrIcon]["shadow"][5], imgMkrs[mkrIcon]["shadow"][6]));
-    }
-    if (mkrIcon && imgMkrs[mkrIcon] && imgMkrs[mkrIcon]["shape"]) {
-        marker.shape = { coord: imgMkrs[mkrIcon]["shape"], type: 'poly'};
-    }
-    var markerPlace = new google.maps.Marker(marker);
-    google.maps.event.addListener(markerPlace, "click", function() {
-            document.location.href=this.link;
-        });
-    return markerPlace;
-}
-function setMarkers(map){
-    var places = new Array();
-    places = [
-    ];
-    var imgMkrs = new Array();
-
-}
-function initialize(){
-    var centerMap = new google.maps.LatLng(39.32,-76.63);
-    var optionsMap = {
-        zoom: 11,
-        center: centerMap,
-        mapTypeId: google.maps.MapTypeId.TERRAIN
-    }
-    var map = new google.maps.Map(document.getElementById("Gmaps"), optionsMap);
-    setMarkers(map);
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-//]]>
-</script>
 </head>
 
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -142,63 +55,20 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
                   <li><a href="about.html"><i class="icon-globe"></i> About</a></li>
 
-                  <li class="active"><a href="contact.html"><i class="icon-envelope"></i> Contact</a></li>
+                  <li><a href="contact.html"><i class="icon-envelope"></i> Contact</a></li>
 
-                  <li><a href="galleries.html"><i class="icon-folder-open"></i> Galleries</a></li>
+                  <li class="active"><a href="galleries.html"><i class="icon-folder-open"></i> Galleries</a></li>
 
 
         </ul>
       </div>
 
       <div class="span8 RBFA">
-        <section id="Contact">
+        <section id="Galleries">
           <div class="page-header">
-           <h1>Contact Bee Friendly Apiary</h1>
+           <h1>Galleries</h1>
           </div>
-                      <div class="row">
-                <div class="span8" id="map_canvas_container">
-                    <div id="map_canvas" class="contacts" style="width:100%; height:500px">
-                      
-        <div id="Gmaps" style="width:100%; height:500px"></div>
-        <noscript>
-            <b>JavaScript must be enabled in order for you to use Google Maps.</b>
-            However, it seems JavaScript is either disabled or not supported by your browser.
-            To view Google Maps, enable JavaScript by changing your browser options, and then
-            try again.
-        </noscript> 
-                    </div>
-                </div>
-            </div><!--row-->
-
-
-<div class="row" id="addresses">
-	<div class="span5">
-		<h4>Addresses</h4>
-
-		<hr />
-		<address>
-		Bill Castro<br />
-		422 Nottingham Rd<br />
-		Baltimore, MD 21229<br />
-		&nbsp;&nbsp; 303-877-4617</address>
-
-		<hr class="dashed" />
-		<address><strong>Serving the Baltimore Region</strong><br />
-		Baltimore, Maryland</address>
-
-		<a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#98;&#105;&#x6c;&#108;&#x69;&#97;m&#x31;&#x39;&#x36;9&#64;&#98;&#x65;&#101;&#102;&#114;&#105;e&#110;&#x64;&#x6c;&#121;&#97;p&#x69;&#x61;&#114;&#121;&#x2e;&#99;&#x6f;&#109;&#63;&#83;&#x75;&#98;&#106;&#x65;&#99;&#x74;&#x3d;&#x57;&#101;&#x62;&#x73;&#x69;&#x74;&#x65; Contact">Email Bill Castro</a>
-
-		<hr class="dashed" />
-	</div>
-	<!--/span5-->
-
-
-	<div class="span3">
-			<br /><br />
-	<img alt="Bill Castro removes a swarm of bees" src="bfa/images/home-slider/bill-swarm-removal.jpg" />
-	</div>
-</div>
-<!--row-->
+          
        </section>
 
               <!-- footer-->
